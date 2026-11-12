@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="medianoche">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code of Conduct · JAVIERA LONDOÑO</title>
+<style>
+:root {
+  --azul: #14395b; --verde: #2f7d4f; --sol: #f2b705; --papel: #f6f8fa;
+  --tinta: #12202e; --t1: #2f7d4f; --t2: #c98a00; --t3: #b23a3a;
+  --card: #fff; --borde: #d5dde5; --prim: #14395b; --prim2: #1d5a6e;
+  --glow: rgba(47, 125, 79, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --papel: #0e1a26; --tinta: #e8eef4; --card: #172636; --borde: #2c4157; --azul: #8cc3f0;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 12% 5%, rgba(44, 160, 145, 0.08), transparent 34rem),
+              radial-gradient(ellipse at 92% 28%, rgba(70, 130, 210, 0.07), transparent 30rem),
+              var(--papel);
+  color: var(--tinta);
+  font: 17px/1.6 "Segoe UI", Calibri, Arial, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  letter-spacing: 0.01em;
+}
+
+::selection { background: #a8e7d7; color: #102b46; }
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ===== NAV CON GLASSMORPHISM ===== */
+nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(12, 34, 56, 0.85);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 28px rgba(5, 22, 39, 0.16);
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  padding: 12px clamp(12px, 3vw, 34px); align-items: center;
+  transition: background 0.4s ease;
+}
+
+nav a {
+  color: #fff; padding: 9px 14px; border-radius: 20px; font-size: 15px; font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav a:hover, nav a:focus-visible {
+  background: var(--sol); color: #14395b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(242, 183, 5, 0.4);
+  outline: none;
+}
+
+.nav-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; margin-left: 8px; }
+.nav-actions button {
+  border: 0; border-radius: 20px; padding: 8px 16px; font-weight: 700; cursor: pointer; font-size: 14px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-actions button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+#lang { background: var(--sol); color: #14395b; }
+#snowBtn { background: #e0f2ff; color: #0a3d5c; }
+#snowBtn.active { background: #6ec1ff; color: #0a1d33; box-shadow: 0 0 15px rgba(110, 193, 255, 0.6); }
+
+.bq {
+  position: relative; display: inline-flex; align-items: center; flex: 1 1 200px; max-width: 280px;
+}
+.bq svg { position: absolute; left: 12px; pointer-events: none; }
+.bq input {
+  width: 100%; padding: 9px 12px 9px 36px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.1); color: #fff; font: inherit; min-height: 40px;
+  transition: all 0.25s ease;
+}
+.bq input::placeholder { color: rgba(255,255,255,0.6); }
+.bq input:focus {
+  outline: none; background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(111, 220, 190, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative; isolation: isolate;
+  min-height: min(820px, calc(100vh - 55px));
+  display: flex; align-items: center; color: #fff;
+  overflow: hidden;
+  background: radial-gradient(circle at 78% 25%, rgba(67, 213, 174, 0.28), transparent 24rem),
+              radial-gradient(circle at 18% 85%, rgba(79, 151, 222, 0.26), transparent 28rem),
+              linear-gradient(125deg, #0b2036 0%, #123d5b 52%, #087b70 100%);
+}
+
+.hero::before, .hero::after {
+  content: ""; position: absolute; z-index: -1; border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%; pointer-events: none;
+}
+.hero::before {
+  width: 520px; height: 520px; right: -130px; top: -170px;
+  box-shadow: 0 0 0 42px rgba(255, 255, 255, 0.025), 0 0 0 88px rgba(255, 255, 255, 0.02);
+  animation: pulseAura 8s ease-in-out infinite alternate;
+}
+.hero::after {
+  width: 280px; height: 280px; left: -130px; bottom: -130px;
+  box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.025);
+  animation: pulseAura 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes pulseAura {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.hero > div {
+  max-width: 1080px; margin: auto; width: 100%; padding: 72px 20px;
+  position: relative;
+}
+
+.hero-top { display: flex; align-items: center; gap: clamp(22px, 4vw, 48px); flex-wrap: wrap; margin-bottom: 24px; }
+.hero-top h1 {
+  color: #b5ffe7; white-space: nowrap; font-size: clamp(1.6rem, 4.6vw, 3.6rem);
+  flex: 1 1 auto; letter-spacing: -0.045em; line-height: 1.04;
+  text-shadow: 0 12px 35px rgba(0, 0, 0, 0.24);
+}
+
+.hero .logos { display: flex; gap: 18px; align-items: center; flex: 0 0 auto; }
+.hero .logo {
+  width: 140px; height: 140px; max-width: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px); border-radius: 20px;
+  display: grid; place-items: center; text-align: center;
+  font-size: 13px; letter-spacing: 0.05em; color: #fff;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.hero .logo:hover {
+  transform: translateY(-6px) rotate(1deg);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 20px rgba(181, 255, 231, 0.3);
+}
+.hero .logo:has(img) { border: 0; padding: 0; }
+.hero .logo img { width: 100%; height: 100%; object-fit: contain; }
+.hero .logo.escudo img { background: #fff; border-radius: 14px; padding: 6px; }
+
+.hero p {
+  color: rgba(255, 255, 255, 0.88); font-size: clamp(1.08rem, 2vw, 1.3rem);
+  line-height: 1.75; max-width: 650px; margin-bottom: 28px;
+}
+
+.btn {
+  display: inline-block; padding: 13px 28px; border-radius: 999px;
+  background: linear-gradient(135deg, #ffe08a, #f3bd4c);
+  color: #173b5e; font-weight: 700; font-size: 1rem; border: 0; cursor: pointer;
+  box-shadow: 0 9px 24px rgba(5, 22, 39, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(242, 183, 5, 0.4), 0 0 20px rgba(242, 183, 5, 0.3);
+  filter: saturate(1.1);
+}
+
+/* ===== SECTIONS & CARDS ===== */
+section { padding: clamp(54px, 7vw, 88px) 22px; max-width: 1080px; margin: auto; }
+section h2 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem); color: var(--azul);
+  letter-spacing: -0.035em; margin-bottom: 12px;
+}
+h2::after {
+  content: ""; display: block; width: 54px; height: 4px; margin-top: 14px;
+  border-radius: 8px; background: linear-gradient(90deg, var(--verde), var(--sol));
+}
+.sub {
+  line-height: 1.8; color: color-mix(in srgb, var(--tinta) 78%, transparent);
+  max-width: 720px; margin-bottom: 28px;
+}
+
+.grid3, .grid2 { display: grid; gap: 22px; }
+.grid3 { grid-template-columns: repeat(3, 1fr); }
+.grid2 { grid-template-columns: repeat(2, 1fr); }
+
+.box, .card {
+  background: var(--card); border: 1px solid var(--borde); border-radius: 20px;
+  box-shadow: 0 8px 26px rgba(18, 43, 70, 0.055);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; overflow: hidden;
+}
+
+/* AURA EFFECT ON HOVER */
+.box::before, .card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 20px; padding: 2px;
+  background: linear-gradient(135deg, transparent, var(--verde), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.35s ease;
+}
+
+.box:hover, .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(18, 43, 70, 0.12), 0 0 25px var(--glow);
+  border-color: color-mix(in srgb, var(--verde) 40%, var(--borde));
+}
+.box:hover::before, .card:hover::before { opacity: 1; }
+
+#que-es .box { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+#que-es .foto {
+  height: 245px; margin: 0; border-radius: 0; overflow: hidden; padding: 0;
+  background: repeating-linear-gradient(45deg, #4a6a85, #4a6a85 10px, #56778f 10px, #56778f 20px);
+}
+#que-es .foto img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#que-es .box:hover .foto img { transform: scale(1.06); }
+#que-es .box h3 { margin: 0; padding: 22px 22px 0; color: var(--azul); }
+#que-es .box p { margin: 0; padding: 10px 22px 22px; line-height: 1.75; }
+
+.dc, .ctc { padding: 25px; }
+.dc h3, .ctc h3 { margin-bottom: 14px; color: var(--azul); }
+.dc ul { padding-left: 20px; line-height: 1.85; margin: 0.4em 0; }
+
+/* ===== TABS & PANELS ===== */
+.tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.tab {
+  border: 2px solid var(--borde); background: var(--card); color: var(--tinta);
+  padding: 11px 22px; border-radius: 999px; font-weight: 700; cursor: pointer; font-size: 1rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tab:hover { transform: translateY(-2px); border-color: var(--verde); }
+.tab[aria-selected="true"] {
+  color: #fff; border-color: transparent;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.tab[data-t="1"][aria-selected="true"] { background: var(--t1); box-shadow: 0 8px 20px rgba(47, 125, 79, 0.3); }
+.tab[data-t="2"][aria-selected="true"] { background: var(--t2); box-shadow: 0 8px 20px rgba(201, 138, 0, 0.3); }
+.tab[data-t="3"][aria-selected="true"] { background: var(--t3); box-shadow: 0 8px 20px rgba(178, 58, 58, 0.3); }
+
+.panel {
+  border-left: 8px solid var(--c); background: var(--card);
+  border-radius: 0 18px 18px 0; padding: clamp(20px, 3vw, 30px);
+  border-top: 1px solid var(--borde); border-right: 1px solid var(--borde); border-bottom: 1px solid var(--borde);
+  box-shadow: 0 12px 30px rgba(18, 43, 70, 0.06);
+  animation: panelIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes panelIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.panel h3 { color: var(--c); margin-top: 0; }
+.panel ul { padding-left: 20px; margin: 0.4em 0; }
+
+/* ===== DETAILS ===== */
+details {
+  background: var(--card); border: 1px solid var(--borde); border-radius: 15px;
+  margin-bottom: 12px; overflow: hidden;
+  box-shadow: 0 4px 16px rgba(18, 43, 70, 0.035);
+  transition: all 0.3s ease;
+}
+details[open] {
+  border-color: color-mix(in srgb, var(--verde) 45%, var(--borde));
+  box-shadow: 0 10px 28px rgba(18, 43, 70, 0.08);
+}
+summary {
+  cursor: pointer; padding: 17px 20px; font-weight: 700; color: var(--azul);
+  list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  transition: background 0.2s ease;
+}
+summary:hover { background: color-mix(in srgb, var(--verde) 5%, var(--card)); }
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "＋"; font: 700 1.15rem/1 sans-serif; color: var(--verde);
+  transition: transform 0.3s ease;
+}
+details[open] summary::after { content: "−"; transform: rotate(180deg); }
+details > div { padding: 0 20px 20px; line-height: 1.8; }
+
+/* ===== TABLES ===== */
+.tw {
+  border: 1px solid var(--borde); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 8px 24px rgba(18, 43, 70, 0.05);
+}
+table { width: 100%; border-collapse: collapse; background: var(--card); }
+th, td { padding: 12px 14px; border-bottom: 1px solid var(--borde); text-align: left; }
+th { background: var(--prim); color: #fff; letter-spacing: 0.02em; }
+td { line-height: 1.55; }
+tbody tr { transition: background 0.2s ease; }
+tbody tr:hover { background: color-mix(in srgb, var(--verde) 7%, var(--card)); }
+
+.pill { display: inline-block; padding: 4px 14px; border-radius: 20px; color: #fff; font-size: 14px; font-weight: 700; }
+.p1 { background: var(--t1); } .p2 { background: var(--t2); } .p3 { background: var(--t3); }
+
+/* ===== ENCYCLOPEDIA CARDS ===== */
+.card { padding: 22px; cursor: pointer; text-align: left; font: inherit; color: inherit; width: 100%; }
+.card h3 { font-size: 1.2rem; color: var(--azul); margin: 0 0 8px 0; }
+.card .info { display: none; margin-top: 12px; line-height: 1.75; color: color-mix(in srgb, var(--tinta) 85%, transparent); }
+.card .dato { margin-top: 12px; padding: 12px; background: color-mix(in srgb, var(--sol) 10%, var(--card)); border-radius: 10px; border-left: 3px solid var(--sol); }
+.card.open { border-color: var(--verde); box-shadow: 0 12px 35px rgba(21, 155, 120, 0.15); }
+.card.open .info { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== TEST ===== */
+.top {
+  display: block; width: 100%; text-align: left; margin-bottom: 10px; padding: 14px 18px;
+  border: 1px solid var(--borde); border-radius: 13px; background: var(--card);
+  color: var(--tinta); font: inherit; cursor: pointer;
+  transition: all 0.2s ease;
+}
+.top:not(:disabled):hover {
+  transform: translateX(6px); border-color: var(--verde);
+  box-shadow: 0 4px 12px rgba(47, 125, 79, 0.1);
+}
+.top:disabled { cursor: default; opacity: 0.7; }
+.top.ok { background: var(--t1); border-color: var(--t1); color: #fff; box-shadow: 0 4px 15px rgba(47, 125, 79, 0.3); }
+.top.mal { background: var(--t3); border-color: var(--t3); color: #fff; box-shadow: 0 4px 15px rgba(178, 58, 58, 0.3); }
+#res {
+  margin-top: 16px; padding: 16px 20px; border-radius: 12px; font-weight: 600;
+  background: color-mix(in srgb, var(--verde) 9%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--verde) 20%, var(--borde));
+}
+#tbox { padding: clamp(20px, 4vw, 34px); }
+#tbox .tn { font-weight: 700; color: var(--verde); letter-spacing: 0.04em; margin-bottom: 8px; }
+#tbox .tq { line-height: 1.5; font-size: 1.1rem; margin-bottom: 18px; color: var(--azul); }
+.medal { font-size: 4rem; text-align: center; animation: bounce 1s ease infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* ===== FOOTER ===== */
+footer {
+  background: linear-gradient(125deg, #0b2036, #123d5b 65%, #087b70);
+  color: #fff; padding: 48px 20px; text-align: center;
+}
+footer .qr {
+  width: 150px; height: 150px; margin: 20px auto; padding: 10px;
+  border-radius: 16px; border: 2px solid rgba(255,255,255,0.3);
+  background: #fff; overflow: hidden; transition: transform 0.3s ease;
+}
+footer .qr:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+footer .qr img { width: 100%; height: 100%; object-fit: contain; }
+.copy { font-size: 14px; opacity: 0.85; margin-top: 18px; }
+
+/* ===== THEME PALETTE ===== */
+#temas { position: fixed; left: 12px; bottom: 12px; z-index: 90; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+#tBtn {
+  border: 0; border-radius: 24px; padding: 10px 18px;
+  background: var(--sol); color: #14395b; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
+}
+#tBtn:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 6px 20px rgba(242, 183, 5, 0.4); }
+#tPal {
+  display: flex; gap: 8px; background: var(--card); border: 1px solid var(--borde);
+  padding: 12px; border-radius: 16px; flex-wrap: wrap; max-width: 240px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+}
+#tPal[hidden] { display: none; }
+#tPal button {
+  width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--borde);
+  cursor: pointer; padding: 0; transition: all 0.2s ease;
+}
+#tPal button:hover { transform: scale(1.15); }
+#tPal button[aria-pressed="true"] { border: 3px solid var(--tinta); transform: scale(1.1); }
+
+/* ===== TOOLS ===== */
+#tools {
+  position: fixed; right: 12px; bottom: 12px; z-index: 90;
+  background: rgba(18, 32, 46, 0.95); color: #fff; border-radius: 16px;
+  padding: 16px; display: flex; flex-direction: column; gap: 8px;
+  max-width: 240px; font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+#tools[hidden] { display: none; }
+#tools button {
+  border: 0; border-radius: 10px; padding: 10px; cursor: pointer; font-weight: 600;
+  background: rgba(255,255,255,0.1); color: #fff; transition: all 0.2s ease;
+}
+#tools button:hover { background: var(--sol); color: #14395b; }
+
+/* ===== SNOW CANVAS ===== */
+#snowCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 9999; display: none; }
+#snowCanvas.on { display: block; }
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal-ready section .sub, .reveal-ready section h2, .reveal-ready section > .grid3,
+.reveal-ready section > .grid2, .reveal-ready section > .box, .reveal-ready section > details,
+.reveal-ready section > .tabs, .reveal-ready section > .panel, .reveal-ready section > .tw,
+.reveal-ready section > #enc, .reveal-ready section > #tbox {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-ready .is-visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+/* ===== THEMES ===== */
+html[data-tema="bosque"] { --papel: #0c1a14; --tinta: #e6f2ea; --card: #14261d; --borde: #28463a; --azul: #7fd6a4; --prim: #0a2a1e; --prim2: #14503a; --verde: #3fae78; --sol: #f2c14e; --glow: rgba(63, 174, 120, 0.4); }
+html[data-tema="rosa"] { --papel: #1c0f18; --tinta: #fbe9f2; --card: #2a1724; --borde: #503047; --azul: #f49ac1; --prim: #3a1030; --prim2: #7a2a5c; --verde: #d65b92; --sol: #ffb3d1; --glow: rgba(214, 91, 146, 0.4); }
+html[data-tema="medianoche"] { --papel: #0b1622; --tinta: #e8eef4; --card: #142536; --borde: #27415a; --azul: #8cc3f0; --prim: #0a1d33; --prim2: #14395b; --verde: #4fb3d9; --sol: #f2b705; --glow: rgba(79, 179, 217, 0.4); }
+html[data-tema="oceano"] { --papel: #071c1f; --tinta: #e2f4f3; --card: #0f2c30; --borde: #1f4c52; --azul: #6fe0d5; --prim: #05303a; --prim2: #0c6070; --verde: #2bb5a0; --sol: #ffd37a; --glow: rgba(43, 181, 160, 0.4); }
+html[data-tema="violeta"] { --papel: #140f24; --tinta: #efeafb; --card: #1f1836; --borde: #3b2f66; --azul: #b9a4ff; --prim: #1c1240; --prim2: #4a2f96; --verde: #8a6ff0; --sol: #ffd166; --glow: rgba(138, 111, 240, 0.4); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
+  .grid3, .grid2 { grid-template-columns: 1fr; }
+  section { padding: 44px 16px; }
+  nav { justify-content: flex-start; }
+  nav a { font-size: 14px; padding: 8px 10px; }
+  nav .bq { flex: 1 1 100%; max-width: 100%; margin-top: 8px; }
+  .hero { min-height: 760px; }
+  .hero > div { padding-top: 54px; padding-bottom: 54px; }
+  .hero .logos { gap: 12px; }
+  .hero .logo { width: 112px; height: 112px; max-width: 112px; }
+  #que-es .foto { height: 220px; }
+}
+@media (max-width: 480px) {
+  .hero .hero-top { align-items: flex-start; }
+  .hero .hero-top h1 { white-space: normal; }
+  .hero .logos { width: 100%; justify-content: flex-start; }
+  .hero .logo { width: 96px; height: 96px; max-width: 96px; }
+  .tab { flex: 1; padding: 10px 12px; text-align: center; }
+  #temas { left: 8px; bottom: 8px; }
+  #tools { right: 8px; bottom: 8px; }
+  .nav-actions button { padding: 6px 10px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important; animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;
+  }
+  .reveal-ready section .sub, .reveal-ready section h2, .reveal-ready section > .grid3,
+  .reveal-ready section > .grid2, .reveal-ready section > .box, .reveal-ready section > details,
+  .reveal-ready section > .tabs, .reveal-ready section > .panel, .reveal-ready section > .tw,
+  .reveal-ready section > #enc, .reveal-ready section > #tbox { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="snowCanvas"></canvas>
+
+<nav aria-label="Secciones">
+  <a href="#que-es" data-i18n="nav1">¿Qué es?</a>
+  <a href="#tipos" data-i18n="nav2">Tipos de situaciones</a>
+  <a href="#dia" data-i18n="nav3">En el día a día</a>
+  <a href="#derechos" data-i18n="nav4">Derechos y deberes</a>
+  <a href="#bitacora" data-i18n="nav5">Bitácora</a>
+  <a href="#enciclopedia" data-i18n="nav6">Enciclopedia</a>
+  <a href="#test" data-i18n="nav7">Test final</a>
+  <a href="#contactos" data-i18n="nav8">¿A quién acudir?</a>
+  <label class="bq">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+    <input id="q" type="search" placeholder="Buscar: uniforme, celular, acoso…" aria-label="Buscar en la página">
+  </label>
+  <div class="nav-actions">
+    <button id="lang" aria-label="Change language / Cambiar idioma">EN</button>
+    <button id="snowBtn" title="Nieve / Snow">❄️ Nieve</button>
+  </div>
+</nav>
+<p id="nores" aria-live="polite" style="text-align:center; padding: 8px; color: var(--verde); font-weight: 600;"></p>
+
+<header class="hero" id="inicio">
+  <div>
+    <div class="hero-top">
+      <h1 data-i18n="heroTitle">Code of Conduct<br>JAVIERA LONDOÑO</h1>
+      <div class="logos">
+        <div class="logo"><img src="imagenes/logo1.png" alt="Logo de Code of Conduct"></div>
+        <div class="logo escudo"><img src="imagenes/escudo1.jpg" alt="Escudo de la IE Javiera Londoño"></div>
+      </div>
+    </div>
+    <p data-i18n="heroP">Manual de Convivencia: las reglas que construimos entre todos para convivir bien, resolver los conflictos con respeto y aprender de los errores.</p>
+    <a class="btn" href="#que-es" data-i18n="heroBtn">Conocer más</a>
+  </div>
+</header>
+
+<section id="que-es">
+  <h2 data-i18n="queEsH2">¿Qué es nuestro proyecto?</h2>
+  <p class="sub" data-i18n="queEsP">Una guía digital para entender el Manual de Convivencia sin leer un documento de 80 páginas.</p>
+  <div class="grid3">
+    <article class="box">
+      <div class="foto"><img src="imagenes/foto2.jpg" alt="Foto 1 del proyecto"></div>
+      <h3 data-i18n="q1h">¿Qué es?</h3>
+      <p data-i18n="q1p">El manual es el acuerdo de toda la comunidad educativa: define derechos, deberes, comportamientos, medidas pedagógicas y cómo resolver conflictos. Debe ser conocido y construido por todos.</p>
+    </article>
+    <article class="box">
+      <div class="foto"><img src="imagenes/foto3.jpg" alt="Foto 2 del proyecto" onerror="this.onerror=null;this.src='imagenes/foto3.jfif'"></div>
+      <h3 data-i18n="q2h">¿Cómo funciona?</h3>
+      <p data-i18n="q2p">Las situaciones se clasifican en Tipo I, II y III. Cada una tiene un protocolo: quién actúa, a quién se informa y cómo se repara el daño. El Comité Escolar de Convivencia hace seguimiento.</p>
+    </article>
+    <article class="box">
+      <div class="foto"><img src="imagenes/foto4.jpg" alt="Foto 3 del proyecto"></div>
+      <h3 data-i18n="q3h">¿Qué hemos aprendido?</h3>
+      <p data-i18n="q3p">Que el enfoque actual es pedagógico, no solo de castigo: se busca aprender del error, reparar y comprometerse a no repetirlo. Además, todos somos corresponsables.</p>
+    </article>
+  </div>
+  <p class="nota" style="margin-top:24px; font-size:14px; opacity:0.8; border-left:3px solid var(--sol); padding-left:12px;" data-i18n="qNota">Base: orientaciones del Ministerio de Educación Nacional (Actualización de Manuales de Convivencia Escolar, 2022), Ley 1620 de 2013 y Decreto 1965 de 2013. Para sanciones y procedimientos exactos, el documento oficial es el manual de nuestra IE.</p>
+</section>
+
+<section id="tipos">
+  <h2 data-i18n="tiposH2">Tipos de situaciones</h2>
+  <p class="sub" data-i18n="tiposP">El manual ya no habla solo de "faltas": identifica situaciones que afectan la convivencia y los derechos. Toca cada tipo.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-t="1" aria-selected="true" data-i18n="tab1">Tipo I</button>
+    <button class="tab" role="tab" data-t="2" aria-selected="false" data-i18n="tab2">Tipo II</button>
+    <button class="tab" role="tab" data-t="3" aria-selected="false" data-i18n="tab3">Tipo III</button>
+  </div>
+  <div class="panel" id="panelTipo"></div>
+</section>
+
+<section id="dia">
+  <h2 data-i18n="diaH2">El manual en el día a día</h2>
+  <p class="sub" data-i18n="diaP">Casos de uso reales: toca cada momento del colegio.</p>
+  <details data-i18n-d="d1s"><summary>En el salón de clase</summary><div>Llegar a tiempo, respetar el turno de palabra, cuidar el mobiliario y no interrumpir. <b>Si hay un conflicto:</b> primero se dialoga con el docente, quien aplica una medida pedagógica (Tipo I). Si se repite, se registra y se informa al director de grupo.</div></details>
+  <details data-i18n-d="d2s"><summary>Con los profes</summary><div>Respeto en ambos sentidos: los estudiantes tienen derecho a ser escuchados y a un trato digno, y los docentes a ser respetados. Si un estudiante siente que un adulto lo trata mal, puede acudir al orientador, a coordinación o al Comité de Convivencia. El debido proceso incluye <b>derecho a la defensa</b>.</div></details>
+  <details data-i18n-d="d3s"><summary>En el recreo y los pasillos</summary><div>Juegos sin agresión, cuidado de los espacios y ayuda a quien esté solo. Un empujón aislado es Tipo I; si hay golpes, burlas repetidas o exclusión sistemática, pasa a Tipo II.</div></details>
+  <details data-i18n-d="d4s"><summary>En redes y grupos de WhatsApp</summary><div>El ciberacoso también es convivencia escolar. Memes, fotos o mensajes para humillar a un compañero, aunque sea fuera del colegio, se atienden por la ruta. <b>Guarda evidencia</b> (capturas) y avisa a un docente.</div></details>
+  <details data-i18n-d="d5s"><summary>Presentación personal</summary><div>El manual puede pedir higiene y uniforme, pero la Corte Constitucional ha dicho que no puede discriminar por apariencia ni imponer patrones estéticos excluyentes (libre desarrollo de la personalidad).</div></details>
+  <details data-i18n-d="d6s"><summary>Laboratorios, biblioteca y sala de sistemas</summary><div>Tienen reglas propias de uso y cuidado. Dañar equipos por descuido obliga a reparar; es una oportunidad para asumir responsabilidad.</div></details>
+</section>
+
+<section id="derechos">
+  <h2 data-i18n="derH2">Derechos y deberes</h2>
+  <p class="sub" data-i18n="derP">Convivir es un acuerdo de doble vía: todos tenemos derechos y todos tenemos responsabilidades. Verifica el detalle en el manual de la IE.</p>
+  <div class="grid3">
+    <article class="box dc">
+      <h3 data-i18n="derEst">Estudiantes</h3>
+      <b data-i18n="derD">Derechos</b>
+      <ul><li data-i18n="derD1">Trato digno y sin discriminación.</li><li data-i18n="derD2">Ser escuchado y tener derecho a la defensa.</li><li data-i18n="derD3">Participar en el gobierno escolar.</li></ul>
+      <b data-i18n="derDe">Deberes</b>
+      <ul><li data-i18n="derDe1">Respetar a toda la comunidad.</li><li data-i18n="derDe2">Cuidar las instalaciones y materiales.</li><li data-i18n="derDe3">Cumplir los acuerdos y reparar el daño.</li></ul>
+    </article>
+    <article class="box dc">
+      <h3 data-i18n="derDoc">Docentes</h3>
+      <b data-i18n="derD">Derechos</b>
+      <ul><li data-i18n="derDocD1">Ser respetados por la comunidad.</li><li data-i18n="derDocD2">Contar con condiciones para enseñar.</li><li data-i18n="derDocD3">Participar en la revisión del manual.</li></ul>
+      <b data-i18n="derDe">Deberes</b>
+      <ul><li data-i18n="derDocDe1">Dar trato digno y justo.</li><li data-i18n="derDocDe2">Aplicar medidas pedagógicas y el debido proceso.</li><li data-i18n="derDocDe3">Reportar situaciones de violencia; es obligación legal.</li></ul>
+    </article>
+    <article class="box dc">
+      <h3 data-i18n="derAcu">Acudientes</h3>
+      <b data-i18n="derD">Derechos</b>
+      <ul><li data-i18n="derAcuD1">Ser informados del proceso de su hijo.</li><li data-i18n="derAcuD2">Participar en la actualización del manual.</li><li data-i18n="derAcuD3">Ser escuchados ante una situación.</li></ul>
+      <b data-i18n="derDe">Deberes</b>
+      <ul><li data-i18n="derAcuDe1">Conocer y cumplir el manual.</li><li data-i18n="derAcuDe2">Acompañar el proceso formativo.</li><li data-i18n="derAcuDe3">Asistir a citaciones y apoyar los compromisos.</li></ul>
+    </article>
+  </div>
+</section>
+
+<section id="bitacora">
+  <h2 data-i18n="bitH2">Bitácora · Code of Conduct</h2>
+  <p class="sub" data-i18n="bitP">La bitácora es el cuaderno digital del colegio: ahí se anota qué pasó, de qué tipo fue y quién actuó. Así se ve qué situaciones se repiten y se pueden prevenir. Son ejemplos ilustrativos, sin nombres de personas.</p>
+  <div class="tw"><table id="tabla">
+    <thead><tr><th data-i18n="thFecha">Fecha</th><th data-i18n="thSit">Situación</th><th data-i18n="thTipo">Tipo</th><th data-i18n="thQuien">Quién actúa</th><th data-i18n="thFoto">Foto</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p style="margin-top:20px"><button class="btn" id="btnTotal" data-i18n="btnTotal">Ver total por tipo</button></p>
+  <p id="res" aria-live="polite"></p>
+</section>
+
+<section id="enciclopedia">
+  <h2 data-i18n="encH2">Enciclopedia interactiva</h2>
+  <p class="sub" data-i18n="encP">Toca una tarjeta para abrir la definición y un dato curioso.</p>
+  <div class="grid3" id="enc"></div>
+</section>
+
+<section id="test">
+  <h2 data-i18n="testH2">Test final</h2>
+  <p class="sub" data-i18n="testP">Responde 10 preguntas sobre el manual y gana tu medalla.</p>
+  <div class="box" id="tbox"></div>
+</section>
+
+<section id="contactos">
+  <h2 data-i18n="conH2">¿A quién acudir?</h2>
+  <p class="sub" data-i18n="conP">Si te pasa algo o ves que le pasa a alguien, puedes acudir a estas personas. Si estás en peligro, no esperes: pide ayuda de inmediato.</p>
+  <div class="grid3">
+    <article class="box ctc"><h3 data-i18n="conC1">Coordinación de convivencia</h3><p data-i18n="conC1p">Para reportar peleas, conflictos o cualquier situación que afecte la convivencia.</p></article>
+    <article class="box ctc"><h3 data-i18n="conC2">Orientación escolar</h3><p data-i18n="conC2p">Para hablar de acoso, ciberacoso o lo que te preocupa, y recibir apoyo.</p></article>
+    <article class="box ctc"><h3 data-i18n="conC3">Personero estudiantil</h3><p data-i18n="conC3p">Para defender tus derechos y llevar quejas o propuestas de los estudiantes.</p></article>
+  </div>
+  <div class="box ctc" style="margin-top:22px; border-color:var(--t3);">
+    <h3 data-i18n="conLin">Líneas de ayuda en Colombia</h3>
+    <p data-i18n="conLinP"><b>123</b> Emergencias y Policía · <b>141</b> Línea de protección del ICBF para niños, niñas y adolescentes · <b>155</b> Orientación a mujeres víctimas de violencia.</p>
+    <p class="nota" style="font-size:14px; opacity:0.8; margin-top:8px;" data-i18n="conLinNota">Confirma que los números sigan vigentes antes de la Feria.</p>
+  </div>
+</section>
+
+<footer>
+  <p data-i18n="footDev"><b>Desarrollado por 10°2 - Grupo [Número] - Apoyo a Code of Conduct - IE Javiera Londoño 2026</b></p>
+  <div class="qr" title="QR a la presentación"><img src="imagenes/qr.png" alt="QR de la presentación" onerror="this.parentNode.textContent='Guarda el QR en imagenes/qr.png'"></div>
+  <p class="copy" data-i18n="footCopy">Todos los derechos reservados para el creador de la página y el proyecto Code of Conduct</p>
+</footer>
+
+<div id="temas">
+  <div id="tPal" hidden>
+    <button data-t="medianoche" title="Azul medianoche" aria-label="Azul medianoche" style="background:linear-gradient(135deg,#0a1d33 50%,#8cc3f0 50%)"></button>
+    <button data-t="oceano" title="Océano" aria-label="Océano" style="background:linear-gradient(135deg,#05303a 50%,#6fe0d5 50%)"></button>
+    <button data-t="bosque" title="Bosque" aria-label="Bosque" style="background:linear-gradient(135deg,#0a2a1e 50%,#7fd6a4 50%)"></button>
+    <button data-t="rosa" title="Rosa" aria-label="Rosa" style="background:linear-gradient(135deg,#3a1030 50%,#f49ac1 50%)"></button>
+    <button data-t="violeta" title="Violeta" aria-label="Violeta" style="background:linear-gradient(135deg,#1c1240 50%,#b9a4ff 50%)"></button>
+  </div>
+  <button id="tBtn" aria-expanded="false">🎨 Colores</button>
+</div>
+
+<div id="tools" hidden>
+  <b>Modo edición</b>
+  <span>Toca un texto para escribir. Toca una foto o el QR para cambiarlos.</span>
+  <button id="tFondo">🖼 Foto de fondo</button>
+  <button id="tAdd">➕ Agregar registro</button>
+  <button id="tDel">➖ Quitar último registro</button>
+  <button id="tSave">💾 Guardar página</button>
+  <button id="tOut">Salir</button>
+</div>
+
+<script type="application/json" id="regdata">[["12/08/2026","Discusión por un balón en el recreo","1","Docente de turno",""],["03/09/2026","Burlas repetidas por redes sociales","2","Coordinación y Comité",""],["21/09/2026","Amenaza con arma blanca (ejemplo)","3","Rector y autoridades",""]]</script>
+
+<script>
+/* =========================================================
+   TRADUCCIONES COMPLETAS (ES / EN) - Halloween eliminado
+   ========================================================= */
+const I18N = {
+  es:{
+    nav1:"¿Qué es?",nav2:"Tipos de situaciones",nav3:"En el día a día",nav4:"Derechos y deberes",
+    nav5:"Bitácora",nav6:"Enciclopedia",nav7:"Test final",nav8:"¿A quién acudir?",
+    heroTitle:"Code of Conduct<br>JAVIERA LONDOÑO",
+    heroP:"Manual de Convivencia: las reglas que construimos entre todos para convivir bien, resolver los conflictos con respeto y aprender de los errores.",
+    heroBtn:"Conocer más",
+    queEsH2:"¿Qué es nuestro proyecto?",queEsP:"Una guía digital para entender el Manual de Convivencia sin leer un documento de 80 páginas.",
+    q1h:"¿Qué es?",q1p:"El manual es el acuerdo de toda la comunidad educativa: define derechos, deberes, comportamientos, medidas pedagógicas y cómo resolver conflictos. Debe ser conocido y construido por todos.",
+    q2h:"¿Cómo funciona?",q2p:"Las situaciones se clasifican en Tipo I, II y III. Cada una tiene un protocolo: quién actúa, a quién se informa y cómo se repara el daño. El Comité Escolar de Convivencia hace seguimiento.",
+    q3h:"¿Qué hemos aprendido?",q3p:"Que el enfoque actual es pedagógico, no solo de castigo: se busca aprender del error, reparar y comprometerse a no repetirlo. Además, todos somos corresponsables.",
+    qNota:"Base: orientaciones del Ministerio de Educación Nacional (Actualización de Manuales de Convivencia Escolar, 2022), Ley 1620 de 2013 y Decreto 1965 de 2013. Para sanciones y procedimientos exactos, el documento oficial es el manual de nuestra IE.",
+    tiposH2:"Tipos de situaciones",tiposP:"El manual ya no habla solo de \"faltas\": identifica situaciones que afectan la convivencia y los derechos. Toca cada tipo.",
+    tab1:"Tipo I",tab2:"Tipo II",tab3:"Tipo III",
+    diaH2:"El manual en el día a día",diaP:"Casos de uso reales: toca cada momento del colegio.",
+    d1s:"En el salón de clase",d1c:"Llegar a tiempo, respetar el turno de palabra, cuidar el mobiliario y no interrumpir. <b>Si hay un conflicto:</b> primero se dialoga con el docente, quien aplica una medida pedagógica (Tipo I). Si se repite, se registra y se informa al director de grupo.",
+    d2s:"Con los profes",d2c:"Respeto en ambos sentidos: los estudiantes tienen derecho a ser escuchados y a un trato digno, y los docentes a ser respetados. Si un estudiante siente que un adulto lo trata mal, puede acudir al orientador, a coordinación o al Comité de Convivencia. El debido proceso incluye <b>derecho a la defensa</b>.",
+    d3s:"En el recreo y los pasillos",d3c:"Juegos sin agresión, cuidado de los espacios y ayuda a quien esté solo. Un empujón aislado es Tipo I; si hay golpes, burlas repetidas o exclusión sistemática, pasa a Tipo II.",
+    d4s:"En redes y grupos de WhatsApp",d4c:"El ciberacoso también es convivencia escolar. Memes, fotos o mensajes para humillar a un compañero, aunque sea fuera del colegio, se atienden por la ruta. <b>Guarda evidencia</b> (capturas) y avisa a un docente.",
+    d5s:"Presentación personal",d5c:"El manual puede pedir higiene y uniforme, pero la Corte Constitucional ha dicho que no puede discriminar por apariencia ni imponer patrones estéticos excluyentes (libre desarrollo de la personalidad).",
+    d6s:"Laboratorios, biblioteca y sala de sistemas",d6c:"Tienen reglas propias de uso y cuidado. Dañar equipos por descuido obliga a reparar; es una oportunidad para asumir responsabilidad.",
+    derH2:"Derechos y deberes",derP:"Convivir es un acuerdo de doble vía: todos tenemos derechos y todos tenemos responsabilidades. Verifica el detalle en el manual de la IE.",
+    derEst:"Estudiantes",derDoc:"Docentes",derAcu:"Acudientes",derD:"Derechos",derDe:"Deberes",
+    derD1:"Trato digno y sin discriminación.",derD2:"Ser escuchado y tener derecho a la defensa.",derD3:"Participar en el gobierno escolar.",
+    derDe1:"Respetar a toda la comunidad.",derDe2:"Cuidar las instalaciones y materiales.",derDe3:"Cumplir los acuerdos y reparar el daño.",
+    derDocD1:"Ser respetados por la comunidad.",derDocD2:"Contar con condiciones para enseñar.",derDocD3:"Participar en la revisión del manual.",
+    derDocDe1:"Dar trato digno y justo.",derDocDe2:"Aplicar medidas pedagógicas y el debido proceso.",derDocDe3:"Reportar situaciones de violencia; es obligación legal.",
+    derAcuD1:"Ser informados del proceso de su hijo.",derAcuD2:"Participar en la actualización del manual.",derAcuD3:"Ser escuchados ante una situación.",
+    derAcuDe1:"Conocer y cumplir el manual.",derAcuDe2:"Acompañar el proceso formativo.",derAcuDe3:"Asistir a citaciones y apoyar los compromisos.",
+    bitH2:"Bitácora · Code of Conduct",bitP:"La bitácora es el cuaderno digital del colegio: ahí se anota qué pasó, de qué tipo fue y quién actuó. Así se ve qué situaciones se repiten y se pueden prevenir. Son ejemplos ilustrativos, sin nombres de personas.",
+    thFecha:"Fecha",thSit:"Situación",thTipo:"Tipo",thQuien:"Quién actúa",thFoto:"Foto",btnTotal:"Ver total por tipo",
+    encH2:"Enciclopedia interactiva",encP:"Toca una tarjeta para abrir la definición y un dato curioso.",
+    testH2:"Test final",testP:"Responde 10 preguntas sobre el manual y gana tu medalla.",
+    conH2:"¿A quién acudir?",conP:"Si te pasa algo o ves que le pasa a alguien, puedes acudir a estas personas. Si estás en peligro, no esperes: pide ayuda de inmediato.",
+    conC1:"Coordinación de convivencia",conC1p:"Para reportar peleas, conflictos o cualquier situación que afecte la convivencia.",
+    conC2:"Orientación escolar",conC2p:"Para hablar de acoso, ciberacoso o lo que te preocupa, y recibir apoyo.",
+    conC3:"Personero estudiantil",conC3p:"Para defender tus derechos y llevar quejas o propuestas de los estudiantes.",
+    conLin:"Líneas de ayuda en Colombia",
+    conLinP:"<b>123</b> Emergencias y Policía · <b>141</b> Línea de protección del ICBF para niños, niñas y adolescentes · <b>155</b> Orientación a mujeres víctimas de violencia.",
+    conLinNota:"Confirma que los números sigan vigentes antes de la Feria.",
+    footDev:"<b>Desarrollado por 10°2 - Grupo [Número] - Apoyo a Code of Conduct - IE Javiera Londoño 2026</b>",
+    footCopy:"Todos los derechos reservados para el creador de la página y el proyecto Code of Conduct",
+    snowBtn:"❄️ Nieve",snowBtnOn:"❄️ Nieve ✓",langBtn:"EN",searchPh:"Buscar: uniforme, celular, acoso…"
+  },
+  en:{
+    nav1:"What is it?",nav2:"Types of situations",nav3:"Day to day",nav4:"Rights and duties",
+    nav5:"Logbook",nav6:"Encyclopedia",nav7:"Final test",nav8:"Who to turn to?",
+    heroTitle:"Code of Conduct<br>JAVIERA LONDOÑO",
+    heroP:"Coexistence Manual: the rules we build together to live well, resolve conflicts with respect and learn from mistakes.",
+    heroBtn:"Learn more",
+    queEsH2:"What is our project?",queEsP:"A digital guide to understand the Coexistence Manual without reading an 80-page document.",
+    q1h:"What is it?",q1p:"The manual is the agreement of the entire educational community: it defines rights, duties, behaviors, pedagogical measures and how to resolve conflicts. It must be known and built by everyone.",
+    q2h:"How does it work?",q2p:"Situations are classified into Type I, II and III. Each one has a protocol: who acts, who is informed and how the damage is repaired. The School Coexistence Committee follows up.",
+    q3h:"What have we learned?",q3p:"That the current approach is pedagogical, not only punitive: the goal is to learn from mistakes, repair and commit not to repeat them. Also, we are all co-responsible.",
+    qNota:"Basis: guidelines from the Ministry of National Education (Update of School Coexistence Manuals, 2022), Law 1620 of 2013 and Decree 1965 of 2013. For exact sanctions and procedures, the official document is our school's manual.",
+    tiposH2:"Types of situations",tiposP:"The manual no longer talks only about \"faults\": it identifies situations that affect coexistence and rights. Touch each type.",
+    tab1:"Type I",tab2:"Type II",tab3:"Type III",
+    diaH2:"The manual day to day",diaP:"Real use cases: touch each moment at school.",
+    d1s:"In the classroom",d1c:"Arrive on time, respect the turn to speak, take care of the furniture and do not interrupt. <b>If there is a conflict:</b> first talk with the teacher, who applies a pedagogical measure (Type I). If it repeats, it is recorded and the group director is informed.",
+    d2s:"With the teachers",d2c:"Respect in both directions: students have the right to be heard and to be treated with dignity, and teachers to be respected. If a student feels that an adult treats them badly, they can go to the counselor, coordination or the Coexistence Committee. Due process includes <b>the right to defense</b>.",
+    d3s:"At recess and in the hallways",d3c:"Games without aggression, care of spaces and help to those who are alone. An isolated push is Type I; if there are blows, repeated teasing or systematic exclusion, it becomes Type II.",
+    d4s:"On social networks and WhatsApp groups",d4c:"Cyberbullying is also school coexistence. Memes, photos or messages to humiliate a classmate, even outside school, are handled by the route. <b>Save evidence</b> (screenshots) and tell a teacher.",
+    d5s:"Personal presentation",d5c:"The manual may ask for hygiene and uniform, but the Constitutional Court has said that it cannot discriminate based on appearance or impose exclusionary aesthetic patterns (free development of personality).",
+    d6s:"Labs, library and computer room",d6c:"They have their own rules of use and care. Damaging equipment through carelessness forces repair; it is an opportunity to take responsibility.",
+    derH2:"Rights and duties",derP:"Coexisting is a two-way agreement: we all have rights and we all have responsibilities. Check the details in the IE manual.",
+    derEst:"Students",derDoc:"Teachers",derAcu:"Guardians",derD:"Rights",derDe:"Duties",
+    derD1:"Dignified treatment without discrimination.",derD2:"To be heard and have the right to defense.",derD3:"Participate in school government.",
+    derDe1:"Respect the entire community.",derDe2:"Take care of the facilities and materials.",derDe3:"Comply with agreements and repair the damage.",
+    derDocD1:"To be respected by the community.",derDocD2:"To have conditions to teach.",derDocD3:"Participate in the review of the manual.",
+    derDocDe1:"Give dignified and fair treatment.",derDocDe2:"Apply pedagogical measures and due process.",derDocDe3:"Report situations of violence; it is a legal obligation.",
+    derAcuD1:"To be informed of their child's process.",derAcuD2:"Participate in the update of the manual.",derAcuD3:"To be heard in a situation.",
+    derAcuDe1:"Know and comply with the manual.",derAcuDe2:"Accompany the formative process.",derAcuDe3:"Attend appointments and support commitments.",
+    bitH2:"Logbook · Code of Conduct",bitP:"The logbook is the school's digital notebook: it records what happened, what type it was and who acted. This way you can see which situations repeat and can be prevented. They are illustrative examples, without names of people.",
+    thFecha:"Date",thSit:"Situation",thTipo:"Type",thQuien:"Who acts",thFoto:"Photo",btnTotal:"See total by type",
+    encH2:"Interactive encyclopedia",encP:"Touch a card to open the definition and a fun fact.",
+    testH2:"Final test",testP:"Answer 10 questions about the manual and win your medal.",
+    conH2:"Who to turn to?",conP:"If something happens to you or you see it happening to someone, you can turn to these people. If you are in danger, don't wait: ask for help immediately.",
+    conC1:"Coexistence coordination",conC1p:"To report fights, conflicts or any situation that affects coexistence.",
+    conC2:"School counseling",conC2p:"To talk about bullying, cyberbullying or what worries you, and receive support.",
+    conC3:"Student ombudsman",conC3p:"To defend your rights and bring complaints or proposals from students.",
+    conLin:"Help lines in Colombia",
+    conLinP:"<b>123</b> Emergencies and Police · <b>141</b> ICBF protection line for children and adolescents · <b>155</b> Guidance for women victims of violence.",
+    conLinNota:"Confirm that the numbers are still valid before the Fair.",
+    footDev:"<b>Developed by 10°2 - Group [Number] - Support to Code of Conduct - IE Javiera Londoño 2026</b>",
+    footCopy:"All rights reserved for the creator of the page and the Code of Conduct project",
+    snowBtn:"❄️ Snow",snowBtnOn:"❄️ Snow ✓",langBtn:"ES",searchPh:"Search: uniform, cell phone, bullying…"
+  }
+};
+
+/* Datos dinámicos */
+var L="es", curT=1;
+var TIPOS={
+  1:{c:"#2f7d4f",t:"Tipo I · Situaciones esporádicas",d:"Conflictos manejables y situaciones que afectan el clima escolar sin causar daño al cuerpo o la salud.",ej:["Una discusión por un puesto o un préstamo","Burlas o apodos ocasionales","Llegar tarde o interrumpir la clase"],q:"Se resuelve en el momento: mediación entre las partes, diálogo con el docente, medida pedagógica y compromiso. Se deja registro y se hace seguimiento."},
+  2:{c:"#c98a00",t:"Tipo II · Agresión, acoso y ciberacoso",d:"Agresión escolar, acoso escolar (bullying) o ciberacoso que no son delito, pero se repiten o causan daño al cuerpo o la salud sin incapacidad.",ej:["Burlas o exclusión repetidas a un compañero","Peleas con golpes que causan lesiones leves","Mensajes humillantes en redes o chats"],q:"Se atiende de inmediato a los afectados, se informa a los acudientes, se activan medidas de protección y el caso pasa al Comité Escolar de Convivencia, con seguimiento."},
+  3:{c:"#b23a3a",t:"Tipo III · Presuntos delitos",d:"Situaciones que podrían ser delitos contra la libertad, integridad y formación sexual, u otro delito de la ley penal colombiana.",ej:["Abuso o acoso sexual","Porte de armas o amenazas graves","Extorsión o agresión con incapacidad médica"],q:"Se garantiza atención en salud, se informa a los acudientes y a la Policía de Infancia y Adolescencia o autoridad competente, se reporta al Comité y al SIUCE."}
+};
+var TIPOS_EN={
+  1:{c:"#2f7d4f",t:"Type I · Occasional situations",d:"Manageable conflicts and situations that affect the school climate without harming anyone's body or health.",ej:["An argument over a seat or a borrowed item","Occasional teasing or nicknames","Arriving late or interrupting class"],q:"It is solved on the spot: mediation between the parties, dialogue with the teacher, an educational measure and a commitment. It is recorded and followed up."},
+  2:{c:"#c98a00",t:"Type II · Aggression, bullying and cyberbullying",d:"School aggression, bullying or cyberbullying that is not a crime, but is repeated or causes harm to body or health without incapacity.",ej:["Repeated teasing or exclusion of a classmate","Fights with blows that cause minor injuries","Humiliating messages on social media or chats"],q:"Those affected are cared for immediately, guardians are informed, protection measures are activated and the case goes to the School Coexistence Committee, with follow-up."},
+  3:{c:"#b23a3a",t:"Type III · Alleged crimes",d:"Situations that could be crimes against sexual freedom, integrity and education, or any other crime under Colombian criminal law.",ej:["Sexual abuse or harassment","Carrying weapons or serious threats","Extortion or aggression causing medical incapacity"],q:"Health care is guaranteed, guardians are informed and so is the Children and Adolescents Police or the competent authority; the case is reported to the Committee and the SIUCE."}
+};
+var ENC=[
+  ["Ley 1620 de 2013","Crea el Sistema Nacional de Convivencia Escolar y la Ruta de Atención Integral. Cambió el enfoque de castigo a uno pedagógico.","Su decreto reglamentario, el 1965 de 2013, es el que define los tipos de situaciones."],
+  ["Comité Escolar de Convivencia","Grupo con directivos, docentes, orientación, personero, representante de padres y de estudiantes. Analiza y hace seguimiento a los casos.","Los estudiantes tienen voz en él a través del personero y su representante."],
+  ["Debido proceso","Antes de cualquier medida debe respetarse el derecho a ser escuchado, a presentar descargos y a que se te informe qué se te atribuye.","Es un derecho constitucional, no un favor del colegio."],
+  ["Justicia restaurativa","Busca reparar el daño y reconciliar, en lugar de solo sancionar. Incluye mediación y compromisos de no repetición.","El Ministerio promueve \"aprender del error\" en lugar del estigma de la falta."],
+  ["Acoso escolar","Conducta negativa, intencional, repetida y sistemática contra un estudiante, también por medios digitales.","Presenciar y callar también lo mantiene: reportar protege."],
+  ["SIUCE","Sistema Unificado de Información de Convivencia Escolar, donde se reportan los casos Tipo II y III.","Permite al Estado conocer qué pasa en los colegios del país y actuar."]
+];
+var ENC_EN=[
+  ["Law 1620 of 2013","Creates the National School Coexistence System and the Comprehensive Care Pathway. It shifted the approach from punishment to an educational one.","Its regulatory decree, 1965 of 2013, defines the types of situations."],
+  ["School Coexistence Committee","A group with principals, teachers, counselors, the student ombudsman and parent and student representatives. It analyzes and follows up on cases.","Students have a voice in it through the ombudsman and their representative."],
+  ["Due process","Before any measure, the right to be heard, to present your side and to be told what you are accused of must be respected.","It is a constitutional right, not a favor from the school."],
+  ["Restorative justice","It seeks to repair the harm and reconcile, rather than just punish. It includes mediation and commitments not to repeat.","The Ministry promotes \"learning from mistakes\" instead of stigma."],
+  ["School bullying","Negative, intentional, repeated and systematic conduct against a student, also through digital media.","Watching and staying silent keeps it going: reporting protects."],
+  ["SIUCE","The Unified School Coexistence Information System, where Type II and III cases are reported.","It lets the State know what happens in schools across the country and act."]
+];
+var TQ_ES=[
+  ["Una discusión por un puesto, sin daño a nadie, es una situación de…",["Tipo I","Tipo II","Tipo III"],0,"Es esporádica y sin daño: se resuelve mediante diálogo."],
+  ["El acoso escolar se caracteriza por ser…",["Un acto único sin intención","Repetido, intencional y sistemático","Solo físico"],1,"Es una conducta negativa que se repite, también por medios digitales."],
+  ["Humillar a un compañero con memes en un chat es…",["Una broma sin importancia","Ciberacoso (Tipo II)","Una falta de uniforme"],1,"El ciberacoso también hace parte de la convivencia escolar."],
+  ["Un presunto abuso sexual es una situación de…",["Tipo I","Tipo II","Tipo III"],2,"Puede tratarse de un delito: se informa a la Policía de Infancia y Adolescencia."],
+  ["¿Qué ley creó el Sistema Nacional de Convivencia Escolar?",["Ley 1620 de 2013","Ley 100 de 1993","Ley 30 de 1992"],0,"La Ley 1620 de 2013 creó el sistema y la ruta de atención."],
+  ["El debido proceso incluye…",["Sancionar sin escuchar","Ser escuchado y tener derecho a la defensa","Que una sola persona decida"],1,"Antes de cualquier medida, la persona debe ser escuchada."],
+  ["¿Quién hace seguimiento a los casos en el colegio?",["El Comité Escolar de Convivencia","La tienda escolar","El transporte escolar"],0,"El Comité analiza los casos y verifica la reparación."],
+  ["El enfoque actual del manual es principalmente…",["Solo castigar","Educativo y restaurativo","Ignorar los conflictos"],1,"Busca aprender del error y reparar el daño causado."],
+  ["¿Dónde se reportan los casos Tipo II y III?",["En el SIUCE","En un grupo de WhatsApp","En ninguna parte"],0,"El SIUCE es el sistema unificado de información de convivencia."],
+  ["Si ves que le hacen ciberacoso a un compañero, lo mejor es…",["Reírte y reenviarlo","Guardar evidencia y avisar a un docente","No hacer nada"],1,"Reportar protege; callar mantiene el problema."]
+];
+var TQ_EN=[
+  ["An argument over a seat, with no harm to anyone, is a situation of…",["Type I","Type II","Type III"],0,"It is occasional and harmless: it is solved through dialogue."],
+  ["School bullying is characterized by being…",["A single act without intent","Repeated, intentional and systematic","Only physical"],1,"It is negative conduct that repeats, also through digital media."],
+  ["Humiliating a classmate with memes in a chat is…",["A harmless joke","Cyberbullying (Type II)","A uniform violation"],1,"Cyberbullying is also school coexistence."],
+  ["An alleged sexual abuse is a situation of…",["Type I","Type II","Type III"],2,"It may be a crime: the Children and Adolescents Police is informed."],
+  ["Which law created the National School Coexistence System?",["Law 1620 of 2013","Law 100 of 1993","Law 30 of 1992"],0,"Law 1620 of 2013 created the system and the care pathway."],
+  ["Due process includes…",["Punishing without listening","Being heard and having the right to defense","One person deciding alone"],1,"Before any measure, the person must be heard."],
+  ["Who follows up on cases at school?",["The School Coexistence Committee","The school store","School transport"],0,"The Committee analyzes cases and verifies the repair."],
+  ["The manual's current approach is mainly…",["Only punishing","Educational and restorative","Ignoring conflicts"],1,"It seeks to learn from mistakes and repair the harm."],
+  ["Where are Type II and III cases reported?",["In the SIUCE","In a WhatsApp group","Nowhere"],0,"The SIUCE is the school coexistence information system."],
+  ["If you see a classmate being cyberbullied, the best thing is to…",["Laugh and forward it","Save evidence and tell a teacher","Do nothing"],1,"Reporting protects; staying silent keeps the problem going."]
+];
+
+/* =========================================================
+   APLICAR IDIOMA A TODO EL DOM
+   ========================================================= */
+function applyLang(){
+  var dict = I18N[L];
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var k = el.getAttribute("data-i18n");
+    if(dict[k]!==undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll("[data-i18n-d]").forEach(function(el){
+    var k = el.getAttribute("data-i18n-d");
+    var base = k.slice(0,-1);
+    var sumKey = base+"s", conKey = base+"c";
+    var sum = el.querySelector("summary"), con = el.querySelector("div");
+    if(sum && dict[sumKey]!==undefined) sum.textContent = dict[sumKey];
+    if(con && dict[conKey]!==undefined) con.innerHTML = dict[conKey];
+  });
+  document.getElementById("q").placeholder = dict.searchPh;
+  var snowActive = document.getElementById("snowCanvas").classList.contains("on");
+  document.getElementById("snowBtn").textContent = snowActive ? dict.snowBtnOn : dict.snowBtn;
+  document.getElementById("lang").textContent = dict.langBtn;
+  document.documentElement.lang = L==="es"?"es":"en";
+  verTipo(curT); pintar(); pintarEnc(); renderTest();
+}
+
+/* =========================================================
+   LÓGICA DE COMPONENTES
+   ========================================================= */
+var dataTag=document.getElementById("regdata");
+var REG=JSON.parse(dataTag.textContent);
+
+var panel=document.getElementById("panelTipo");
+function verTipo(n){
+  curT=n; var t=(L==="en"?TIPOS_EN:TIPOS)[n];
+  panel.style.setProperty("--c",t.c);
+  panel.innerHTML="<h3>"+t.t+"</h3><p>"+t.d+"</p><b>"+(L==="en"?"Examples:":"Ejemplos:")+"</b><ul>"+t.ej.map(function(x){return"<li>"+x+"</li>"}).join("")+"</ul><p><b>"+(L==="en"?"What happens?":"¿Qué se hace?")+"</b> "+t.q+"</p>";
+  document.querySelectorAll(".tab").forEach(function(b){b.setAttribute("aria-selected",b.dataset.t==n)});
+}
+document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){verTipo(parseInt(b.dataset.t))}});
+verTipo(1);
+
+var tb=document.querySelector("#tabla tbody");
+function celda(t){var d=document.createElement("td");d.textContent=t;return d}
+function pintar(){
+  tb.innerHTML="";
+  REG.forEach(function(r){
+    var tr=document.createElement("tr"), c=celda(""), sp=document.createElement("span");
+    sp.className="pill p"+r[2]; sp.textContent=(L==="en"?"Type ":"Tipo ")+["","I","II","III"][r[2]];
+    c.appendChild(sp);
+    tr.appendChild(celda(r[0])); tr.appendChild(celda(r[1])); tr.appendChild(c); tr.appendChild(celda(r[3]));
+    var cf=celda("");
+    if(r[4]){var im=document.createElement("img");im.src=r[4];im.alt="Foto del registro";im.className="mini";im.style.cssText="width:64px;height:48px;object-fit:cover;border-radius:6px;display:block";cf.appendChild(im)}
+    else cf.textContent="—";
+    tr.appendChild(cf); tb.appendChild(tr);
+  });
+}
+pintar();
+document.getElementById("btnTotal").onclick=function(){
+  var c={1:0,2:0,3:0}; REG.forEach(function(r){c[r[2]]++});
+  document.getElementById("res").textContent=(L==="en"?"Total records — Type I: ":"Total registros — Tipo I: ")+c[1]+" | "+(L==="en"?"Type II":"Tipo II")+": "+c[2]+" | "+(L==="en"?"Type III":"Tipo III")+": "+c[3];
+};
+
+var enc=document.getElementById("enc");
+function pintarEnc(){
+  enc.innerHTML="";
+  (L==="en"?ENC_EN:ENC).forEach(function(e){
+    var ar=document.createElement("article"); ar.className="card";
+    ar.innerHTML="<h3>"+e[0]+"</h3><div class='info'><p>"+e[1]+"</p><div class='dato'><b>"+(L==="en"?"Fun fact:":"Dato curioso:")+"</b> "+e[2]+"</div></div>";
+    ar.onclick=function(){ar.classList.toggle("open")};
+    enc.appendChild(ar);
+  });
+}
+pintarEnc();
+
+var tbox=document.getElementById("tbox"), tscore=0, tstep=0;
+function renderTest(){
+  var qs=L==="en"?TQ_EN:TQ_ES;
+  if(tstep>=qs.length){
+    tbox.innerHTML="<div class='medal'>🏆</div><h3 style='text-align:center;color:var(--azul)'>"+(L==="en"?"Test completed!":"¡Test completado!")+"</h3><p style='text-align:center;font-size:1.2rem'>"+(L==="en"?"Your score:":"Tu puntaje:")+" <b>"+tscore+" / "+qs.length+"</b></p><p style='text-align:center'><button class='btn' onclick='tstep=0;tscore=0;renderTest()' style='margin-top:16px'>"+(L==="en"?"Try again":"Repetir test")+"</button></p>";
+    return;
+  }
+  var q=qs[tstep];
+  var h="<p class='tn'>"+(L==="en"?"Question ":"Pregunta")+" "+(tstep+1)+"/"+qs.length+"</p><h3 class='tq'>"+q[0]+"</h3>";
+  q[1].forEach(function(op,i){
+    h+="<button class='top' onclick='ans("+i+","+q[2]+",\""+q[3].replace(/"/g,"&quot;")+"\")'>"+op+"</button>";
+  });
+  h+="<div id='tfb'></div>";
+  tbox.innerHTML=h;
+}
+function ans(i,correct,exp){
+  var btns=tbox.querySelectorAll(".top");
+  btns.forEach(function(b,idx){
+    b.disabled=true;
+    if(idx===correct) b.className="top ok";
+    else if(idx===i) b.className="top mal";
+  });
+  if(i===correct) tscore++;
+  document.getElementById("tfb").innerHTML="<b>"+(i===correct?(L==="en"?"Correct! ":"¡Correcto! "):"")+"</b>"+exp+"<br><button class='btn' style='margin-top:14px;padding:10px 20px;font-size:0.95rem' onclick='tstep++;renderTest()'>"+(L==="en"?"Next question ➔":"Siguiente pregunta ➔")+"</button>";
+}
+renderTest();
+
+/* =========================================================
+   BOTÓN IDIOMA Y BÚSQUEDA
+   ========================================================= */
+document.getElementById("lang").onclick=function(){ L = L==="es" ? "en" : "es"; applyLang(); };
+
+document.getElementById("q").oninput=function(e){
+  var val=e.target.value.toLowerCase().trim();
+  var resBox=document.getElementById("nores");
+  if(!val){resBox.textContent="";return;}
+  var found=0;
+  document.querySelectorAll("section").forEach(function(sec){
+    if(sec.textContent.toLowerCase().includes(val)) found++;
+  });
+  resBox.textContent=found>0 ? (L==="en"?"Found in ":"Encontrado en ")+found+(L==="en"?" section(s)":" sección(es)") : (L==="en"?"No results found":"No se encontraron resultados");
+};
+
+/* =========================================================
+   TEMAS DE COLOR
+   ========================================================= */
+document.getElementById("tBtn").onclick=function(){
+  var p=document.getElementById("tPal"), ex=p.hidden;
+  p.hidden=!ex; this.setAttribute("aria-expanded",ex);
+};
+document.querySelectorAll("#tPal button").forEach(function(b){
+  b.onclick=function(){
+    document.documentElement.setAttribute("data-tema", b.dataset.t);
+  };
+});
+
+/* =========================================================
+   EFECTO NIEVE
+   ========================================================= */
+var snowCanvas = document.getElementById("snowCanvas");
+var sctx = snowCanvas.getContext("2d");
+var flakes = [];
+var snowAnimId = null;
+var snowOn = false;
+
+function resizeSnow(){
+  snowCanvas.width = window.innerWidth;
+  snowCanvas.height = window.innerHeight;
+}
+function initFlakes(){
+  flakes = [];
+  var count = Math.min(140, Math.floor(window.innerWidth/8));
+  for(var i=0;i<count;i++){
+    flakes.push({
+      x: Math.random()*snowCanvas.width, y: Math.random()*snowCanvas.height,
+      r: Math.random()*3+1.5, vy: Math.random()*1.2+0.5, vx: (Math.random()-0.5)*0.8, o: Math.random()*0.6+0.4
+    });
+  }
+}
+function drawSnow(){
+  sctx.clearRect(0,0,snowCanvas.width,snowCanvas.height);
+  for(var i=0;i<flakes.length;i++){
+    var f=flakes[i];
+    sctx.beginPath(); sctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+    sctx.fillStyle="rgba(255,255,255,"+f.o+")";
+    sctx.shadowColor="rgba(255,255,255,.6)"; sctx.shadowBlur=6;
+    sctx.fill();
+    f.y += f.vy; f.x += f.vx;
+    if(f.y > snowCanvas.height){ f.y=-5; f.x=Math.random()*snowCanvas.width; }
+    if(f.x > snowCanvas.width) f.x=0;
+    if(f.x < 0) f.x=snowCanvas.width;
+  }
+  snowAnimId = requestAnimationFrame(drawSnow);
+}
+function toggleSnow(force){
+  var next = (force===undefined) ? !snowOn : force;
+  snowOn = next;
+  var btn = document.getElementById("snowBtn");
+  if(snowOn){
+    resizeSnow(); initFlakes(); snowCanvas.classList.add("on"); drawSnow(); btn.classList.add("active");
+  } else {
+    snowCanvas.classList.remove("on");
+    if(snowAnimId) cancelAnimationFrame(snowAnimId);
+    sctx.clearRect(0,0,snowCanvas.width,snowCanvas.height);
+    btn.classList.remove("active");
+  }
+  applyLang();
+}
+document.getElementById("snowBtn").onclick = function(){ toggleSnow(); };
+window.addEventListener("resize", function(){ if(snowOn){ resizeSnow(); } });
+
+/* =========================================================
+   ANIMACIONES DE APARICIÓN (SCROLL REVEAL)
+   ========================================================= */
+(function(){
+  if(!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.documentElement.classList.add("reveal-ready");
+  var targets=document.querySelectorAll("section .sub,section h2,section>.grid3,section>.grid2,section>.box,section>details,section>.tabs,section>.panel,section>.tw,section>#enc,section>#tbox");
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.08, rootMargin:"0px 0px -35px 0px"});
+  targets.forEach(function(el){observer.observe(el)});
+})();
+
+applyLang();
+</script>
+</body>
+</html>
